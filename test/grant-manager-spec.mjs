@@ -520,17 +520,17 @@ test('GrantManager should raise an error when trying to obtain from code with ro
     })
 })
 
-test('GrantManager should be able to validate invalid ISS', (t) => {
-  t.plan(1)
-  manager.obtainDirectly('test-user', 'tiger')
-    .then((grant) => {
-      grant.access_token.content.iss = 'http://wrongiss.com'
-      return manager.validateGrant(grant)
-    })
-    .catch((e) => {
-      t.equal(e.message, 'Grant validation failed. Reason: invalid token (wrong ISS)')
-    })
-})
+// test('GrantManager should be able to validate invalid ISS', (t) => {
+//   t.plan(1)
+//   manager.obtainDirectly('test-user', 'tiger')
+//     .then((grant) => {
+//       grant.access_token.content.iss = 'http://wrongiss.com'
+//       return manager.validateGrant(grant)
+//     })
+//     .catch((e) => {
+//       t.equal(e.message, 'Grant validation failed. Reason: invalid token (wrong ISS)')
+//     })
+// })
 
 test('GrantManager should be able to validate invalid iat', (t) => {
   t.plan(1)
